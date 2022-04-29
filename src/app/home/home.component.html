@@ -1,31 +1,35 @@
 <h1 align="center">Acme Product management</h1>
-Filter By:<input type="text" [(ngModel)]='listFilter'/>
-<h4>Filtered By: {{listFilter}}</h4>
-<br>
-<table class="table table-bordered table-dark" *ngIf='products.length'>
-    <thead>
-        <tr>
-            <th scope="col"><button class='bth btn-primary' (click)="imageToggle()">{{imageShow ? 'Hide' :'Show'}} Image</button></th>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Code</th>
-            <th scope="col">ReleaseDate</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-            <th scope="col">Star Rating</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor='let product of filteredproducts'>
-            <th scope="row"><img *ngIf='imageShow' 
-              [src]=product.imageUrl></th>
-            <td>{{product.productId}}</td>
-            <td>{{product.productName}}</td>
-            <td>{{product.productCode}}</td>
-            <td>{{product.releaseDate}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.starRating}}</td>
-        </tr>
-    </tbody>
+<h3>Product List:The Rating {{ starRating }} was clicked</h3>
+Filter By:<input type="text" [(ngModel)]="listFilter" />
+<h4>Filtered By: {{ listFilter }}</h4>
+<br />
+<table class="table table-bordered table-dark" *ngIf="products.length">
+  <thead>
+    <tr>
+      <th scope="col">
+        <button class="bth btn-primary" (click)="imageToggle()">
+          {{ imageShow ? "Hide" : "Show" }} Image
+        </button>
+      </th>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Code</th>
+      <th scope="col">ReleaseDate</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Star Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of filteredproducts; let i; as: index">
+      <th scope="row"><img *ngIf="imageShow" [src]="product.imageUrl" /></th>
+      <td>{{ product.productId }}</td>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.productCode }}</td>
+      <td>{{ product.releaseDate }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.price }}</td>
+      <td (click)="starClicked(i)">{{ product.starRating }}</td>
+    </tr>
+  </tbody>
 </table>

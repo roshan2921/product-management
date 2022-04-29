@@ -8,6 +8,7 @@ import { ProductsService } from '../products.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  starRating: number=0
   pageTitle: string = 'productlist';
   showImage: boolean = false;
   imageShow: boolean = false;
@@ -43,5 +44,8 @@ export class HomeComponent implements OnInit {
   imageToggle() {
     this.imageShow = !this.imageShow;
   }
-  onratingClicked() {}
+  starClicked(i: any) {
+    this.starRating = i.starRating;
+    console.log(this.starRating);
+  }
 }
